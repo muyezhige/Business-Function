@@ -1,6 +1,6 @@
 /**
  * @description 根据数组列表，循环拼接DOM结构，每4个span，外围包裹一个DIV节点。
- * @param {String} [tpl] 拼接输出模板
+ * @param {String} [tpl] 拼接后输出的最终模板
  */
 
 let list = []; // 接口返回的数据
