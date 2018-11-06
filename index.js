@@ -63,3 +63,31 @@ function showCountDown(endTimeStamp, divname) {
 setInterval(function() {
     showCountDown(1539723925000, 'divdown');
 }, 1000);
+
+/**
+ * @description 单击选中的button，在显示区域滚动居中显示
+ * @param {string} [parentClass] 外围滚动区域的样式类名，通过它获取显示宽度
+ * @param {Number} [index] 当前按钮的索引值
+ * @param {Object} [mySwiper] 当前操作的swiper对象
+ * @param {Array} [slidesGrid] 数组集合，包含了按钮各自居左的位置；
+ * @param {Array} [slidesSizesGrid] 数组集合，包含了按钮各自的宽度；
+ */
+let scrollToCenter = function(parentClass, index, mySwiper) {
+    let maxTranslate = mySwiper.maxTranslate();
+    let translateX = 0,
+        translateY = 0,
+        translateZ = 0;
+
+    translateX = -(mySwiper.slidesGrid[index + 1] - ($(parentClass).width() + mySwiper.slidesSizesGrid[index]) / 2);
+
+    if (-translateX > -maxTranslate) {
+        translateX = maxTranslate;
+    }
+
+    if (translateX > 0 ) {
+        translateX = 0;
+    }
+
+    mySwiper.setWrapperTransition(250);
+    mySwiper.setWrapperTranslate(translateX);
+};
